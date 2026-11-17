@@ -1,0 +1,32 @@
+<div class="carousel" *ngIf="items.length">
+    <button
+        class="arrow"
+        (click)="previous()"
+        aria-label="Poprzednie"
+    >&#10094;</button>
+
+    <div class="carousel-viewport">
+
+        <div
+            #track
+            class="carousel-track"
+            [class.no-transition]="!transitionEnabled()"
+            [style.transform]="'translate3d(-' + offset() + 'px, 0, 0)'"
+            (transitionend)="onTransitionEnd($event)">
+            @for (slide of trackItems; track $index; let i = $index) {
+                <div #firstSlide class="carousel-slide">
+                    <ng-container
+                        *ngTemplateOutlet="cardTemplate;
+                            context: {$implicit: slide.item, index: slide.index}
+                        ">
+                    </ng-container>
+                </div>   
+            }
+        </div>
+    </div>
+    <button
+        class="arrow"
+        (click)="next()"
+        aria-label="Następne"
+    >&#10095;</button>
+</div>

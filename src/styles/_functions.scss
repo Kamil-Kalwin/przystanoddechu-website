@@ -1,0 +1,7 @@
+@function alpha($color, $amount) {
+    @return color-mix(
+        in srgb,
+        var($color) $amount,
+        transparent
+    );
+}

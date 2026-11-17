@@ -1,0 +1,13 @@
+<div class="header">
+    <div class="left">
+        <div class="logo">
+            <img src="images/logo.png" alt="Przystań oddechu">
+        </div>
+    </div>
+
+    <div class="right">
+        @for (item of HeaderConfigOptions | keyvalue; track item.key) {
+            <a [routerLink]="item.value.url">{{item.value.title}}</a>
+        }
+    </div>
+</div>

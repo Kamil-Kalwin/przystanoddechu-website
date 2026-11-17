@@ -1,0 +1,40 @@
+@use 'functions' as fn;
+
+.header {
+    position: sticky;
+    z-index: 5;
+    top: 0;
+    height: 90px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-white);
+    padding: 0 50px;
+    box-shadow: 0 1px 5px 1px fn.alpha(--color-secondary-300, 40%);
+}
+
+.left {
+    padding: 5px;
+    .logo {
+        img {
+            width: 70px;
+        }
+    }
+}
+
+.right {
+    display: flex;
+    color: var(--color-secondary-300);
+    >a {
+        display: block;
+        cursor: pointer;
+        padding: 20px;
+        transition: color .2s ease-in;
+        text-decoration: none;
+        color: var(--text-color);
+        &:hover {
+            color: var(--color-accent-500);
+        }
+    }
+}

@@ -1,0 +1,94 @@
+<main>
+    <!-- <div class="banner">
+        <h1>Witaj. Dobrze, że Jesteś.</h1>
+    </div> -->
+
+    <div class="hero">
+        <word-cloud
+            [words]="keywords"
+            [maxVisible]="20"
+            [minFontSize]="14"
+            [maxFontSize]="42"
+            [hue]="190"
+            [spawnInterval]="500"
+        ></word-cloud>
+        <div class="main-text">
+            <h1>Przystań Oddechu</h1>
+            <p>
+                Spotykamy się tutaj z ciekawością tego, co jest.<br>
+                Każdy na swój sposób.
+            </p>
+        </div>
+    </div>
+
+    <div class="part about">
+        <h2 class="part-header">O mnie</h2>
+        <div class="content">
+            <div class="text">
+                <div>
+                    Mam na imię Bernadeta. Towarzyszę w powrotach - do ciszy, do oddechu, do siebie.
+                    <br><br>
+                    Życie prowadziło mnie ścieżkami, które uczyły słuchać - subtelnych szeptów ciała, rytmu natury, cichego głosu serca. Z czasem zrozumiałam, że nie trzeba niczego udowadniać, nie trzeba niczego szukać na siłę. Wystarczy być... naprawdę, bez masek. Oddychać. Zatrzymać się. Pobyć.
+                    <br><br>
+                    Moje doświadczenia są moją nauczycielką - joga, oddech, uważność, intuicja i codzienne rytuały obecności, które przywracają sens w najprostszych gestach. Każda z tych ścieżek zaprowadziła mnie bliżej do siebie - i to z tego miejsca zapraszam Ciebie.
+                </div>
+                <button>Dowiedz się więcej</button>
+            </div>
+            <div class="image">
+                <img src="/images/about.png">
+            </div>
+        </div>
+    </div>
+
+    <div class="part services">
+        <h2 class="part-header">Co mogę zaoferować</h2>
+        <div class="content">
+            <carousel [items]="ServiceTypes">
+
+                <ng-template #cardTemplate let-serviceType let-index="index">
+                    <div class="card">
+                        <div class="card-image" [style.background-image]="'url('+serviceType.image+')'"></div>
+                        <div class="card-content">
+                            <h3 class="card-title">{{serviceType.title}}</h3>
+                            <p class="card-text">{{serviceType.description}}</p>
+                        </div>
+
+                        <div class="card-overlay">
+                            <div class="service-list">
+                                @for (service of getServicesByType(serviceType.serviceType); track $index) {
+                                    <a [href]="service.url">{{service.title}}</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </carousel>
+        </div>
+    </div>
+
+    <div class="part reviews">
+        <h2>Głosy uczestników</h2>
+    </div>
+
+    <div class="part other">
+        <h2 class="part-header">Zostań jeszcze przez chwilkę...</h2>
+        <div class="content">
+            <div class="card">
+                <h3>Gdzie możemy się spotkać?</h3>
+                <p>Najbliższe spotkania, warsztaty, kursy.</p>
+            </div>
+            <div class="card">
+                <h3>Wyrusz ze mną trochę dalej</h3>
+                <p>Miejsca, drogi i podróże przeżywane uważniej.</p>
+            </div>
+            <div class="card">
+                <h3>Zrób herbatę.</h3>
+                <p>Są tu teksty, do których możesz zajrzeć bez pośpiechu.</p>
+            </div>
+            <div class="card">
+                <h3>Zajrzyj do tego, co powstało.</h3>
+                <p>Obrazy i chwile zatrzymane po drodze.</p>
+            </div>
+        </div>
+    </div>
+</main>

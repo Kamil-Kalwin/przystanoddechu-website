@@ -1,0 +1,66 @@
+:host {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.word-cloud {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.word {
+    position: absolute;
+
+    white-space: nowrap;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+
+    transform: translate(-50%, -50%);
+
+    opacity: 0;
+
+    animation-name: word-animation;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+
+    user-select: none;
+    will-change: opacity, transform, filter;
+}
+
+@keyframes word-animation {
+
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(var(--rotation)) scale(0.7);
+        filter: blur(4px);
+    }
+
+    15% {
+        opacity: 0.85;
+        transform: translate(-50%, -50%) rotate(var(--rotation)) scale(1);
+        filter: blur(0);
+    }
+
+    65% {
+        opacity: 0.85;
+        filter: blur(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(var(--rotation)) scale(1.15);
+        filter: blur(4px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .word {
+        animation: none;
+        opacity: 0.7;
+        transform: translate(-50%, -50%);
+    }
+}
