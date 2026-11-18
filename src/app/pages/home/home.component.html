@@ -1,9 +1,6 @@
 <main>
-    <!-- <div class="banner">
-        <h1>Witaj. Dobrze, że Jesteś.</h1>
-    </div> -->
-
     <div class="hero">
+        <img src="assets/images/landing_page_banner.png">
         <word-cloud
             [words]="keywords"
             [maxVisible]="20"
@@ -35,7 +32,7 @@
                 <button>Dowiedz się więcej</button>
             </div>
             <div class="image">
-                <img src="/images/about.png">
+                <img src="assets/images/about.png">
             </div>
         </div>
     </div>
@@ -47,7 +44,7 @@
 
                 <ng-template #cardTemplate let-serviceType let-index="index">
                     <div class="card">
-                        <div class="card-image" [style.background-image]="'url('+serviceType.image+')'"></div>
+                        <div class="card-image" [style.background-image]="'url(assets/images/'+serviceType.image+')'"></div>
                         <div class="card-content">
                             <h3 class="card-title">{{serviceType.title}}</h3>
                             <p class="card-text">{{serviceType.description}}</p>
@@ -67,7 +64,21 @@
     </div>
 
     <div class="part reviews">
-        <h2>Głosy uczestników</h2>
+        <h2 class="part-header">Głosy uczestników</h2>
+        <div class="content">
+            <div class="card" (mouseenter)="pauseTimer()" (mouseleave)="resumeTimer()">
+                <div class="card-content" [class.visible]="showText()">"{{currentReview()?.content}}"</div>
+            </div>
+            <div class="controls">
+                @for (review of MainReviews; track $index; let i = $index) {
+                    <div class="control" [class.active]="currentReviewId() === i" (click)="changeReview(i)">
+                        @if (currentReviewId() === i) {
+                            <div class="control-progress" [style.width.%]="progress()"></div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
     </div>
 
     <div class="part other">
@@ -76,18 +87,26 @@
             <div class="card">
                 <h3>Gdzie możemy się spotkać?</h3>
                 <p>Najbliższe spotkania, warsztaty, kursy.</p>
+
+                <span>&#10095;&#10095;</span>
             </div>
             <div class="card">
                 <h3>Wyrusz ze mną trochę dalej</h3>
                 <p>Miejsca, drogi i podróże przeżywane uważniej.</p>
+
+                <span>&#10095;&#10095;</span>
             </div>
             <div class="card">
                 <h3>Zrób herbatę.</h3>
                 <p>Są tu teksty, do których możesz zajrzeć bez pośpiechu.</p>
+
+                <span>&#10095;&#10095;</span>
             </div>
             <div class="card">
                 <h3>Zajrzyj do tego, co powstało.</h3>
                 <p>Obrazy i chwile zatrzymane po drodze.</p>
+
+                <span>&#10095;&#10095;</span>
             </div>
         </div>
     </div>

@@ -1,19 +1,19 @@
-<div class="carousel" *ngIf="items.length">
+<div class="carousel" *ngIf="items().length">
     <button
-        class="arrow"
+        class="arrow left"
         (click)="previous()"
         aria-label="Poprzednie"
+        [class.inside]="isControlsInside()"
     >&#10094;</button>
 
     <div class="carousel-viewport">
-
         <div
             #track
             class="carousel-track"
             [class.no-transition]="!transitionEnabled()"
             [style.transform]="'translate3d(-' + offset() + 'px, 0, 0)'"
             (transitionend)="onTransitionEnd($event)">
-            @for (slide of trackItems; track $index; let i = $index) {
+            @for (slide of trackItems(); track $index; let i = $index) {
                 <div #firstSlide class="carousel-slide">
                     <ng-container
                         *ngTemplateOutlet="cardTemplate;
@@ -25,8 +25,9 @@
         </div>
     </div>
     <button
-        class="arrow"
+        class="arrow right"
         (click)="next()"
         aria-label="Następne"
+        [class.inside]="isControlsInside()"
     >&#10095;</button>
 </div>

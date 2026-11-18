@@ -3,12 +3,15 @@ import {
     AfterViewInit,
     ChangeDetectorRef,
     Component,
+    computed,
     ContentChild,
     ElementRef,
     HostListener,
     inject,
+    input,
     Input,
     OnDestroy,
+    OnInit,
     signal,
     TemplateRef,
     ViewChild
@@ -20,10 +23,14 @@ import {
     styleUrl: './carousel.component.scss',
     imports: [CommonModule],
 })
-export class CarouselComponent<T> implements AfterViewInit, OnDestroy {
+export class CarouselComponent<T> implements AfterViewInit, OnDestroy, OnInit {
     private readonly cdr = inject(ChangeDetectorRef);
 
-    @Input() items: T[] = [];
+    items = input<T[]>([]);
+    maxSlideNumber = input<number>(3);
+    breakPoints = input<number[]>([1250, 850]);
+
+    isControlsInside = input<boolean>(false);
 
     @ContentChild(TemplateRef) cardTemplate!: TemplateRef<{
         $implicit: T;
@@ -33,7 +40,7 @@ export class CarouselComponent<T> implements AfterViewInit, OnDestroy {
     @ViewChild('track') track!: ElementRef<HTMLDivElement>;
     @ViewChild('firstSlide') firstSlide!: ElementRef<HTMLDivElement>;
 
-    slideNumber = signal<number>(3);
+    slideNumber = signal<number>(1);
 
     currentIndex = signal<number>(0);
     offset = signal<number>(0);
@@ -42,44 +49,48 @@ export class CarouselComponent<T> implements AfterViewInit, OnDestroy {
 
     private resizeObserver?: ResizeObserver;
 
-    get trackItems(): { item: T; index: number }[] {
-        if (!this.items.length) return [];
+    trackItems = computed(() =>  {
+        if (!this.items().length) return [];
 
-        return Array.from({ length: 5 }, (_, i) => {
+        return Array.from({ length: this.slideNumber() + 2 }, (_, i) => {
             const index = (
-                (this.currentIndex() + i - 1) % this.items.length
-                + this.items.length
-            ) % this.items.length;
+                (this.currentIndex() + i - 1) % this.items().length + this.items().length
+            ) % this.items().length;
 
             return {
-                item: this.items[index],
+                item: this.items()[index],
                 index
             };
         });
+    })
+
+    ngOnInit(): void {
+        this.onResize(0);
     }
 
     @HostListener('window:resize', ['$event'])
-    onResize(event: Event) {
-        let count = 1;
+    onResize(event: any) {
+        this.offset.set(this.getStepSize());
 
-        if (window.innerWidth >= 1250) {
-            count = 3;
-        } else if (window.innerWidth >= 850) {
-            count = 2;
+        for (const [index, breakPoint] of this.breakPoints().entries()) {
+            if (window.innerWidth >= breakPoint) {
+                this.slideNumber.set(this.maxSlideNumber() - index);
+                
+                return;
+            }
         }
 
-        this.slideNumber.set(count);
-
+        this.slideNumber.set(1);
     }
 
     ngAfterViewInit(): void {
-        this.resizeObserver = new ResizeObserver(() => {
-            requestAnimationFrame(() => {
-                this.offset.set(this.getStepSize());
-            });
-        });
+        // this.resizeObserver = new ResizeObserver(() => {
+        //     requestAnimationFrame(() => {
+        //         this.offset.set(this.getStepSize());
+        //     });
+        // });
 
-        this.resizeObserver.observe(this.track.nativeElement);
+        // this.resizeObserver.observe(this.track.nativeElement);
 
         this.offset.set(this.getStepSize());
     }
@@ -98,13 +109,13 @@ export class CarouselComponent<T> implements AfterViewInit, OnDestroy {
     }
 
     next(): void {
-        if (this.items.length <= 1) return;
+        if (this.items().length <= 1) return;
 
         this.offset.set(this.getStepSize() * 2);
     }
 
     previous(): void {
-        if (this.items.length <= 1) return;
+        if (this.items().length <= 1) return;
 
         this.offset.set(0);
     }
@@ -118,9 +129,9 @@ export class CarouselComponent<T> implements AfterViewInit, OnDestroy {
         this.transitionEnabled.set(false);
 
         if (this.offset() === 0) {
-            this.currentIndex.update((idx) => (idx - 1 + this.items.length) % this.items.length);
+            this.currentIndex.update((idx) => (idx - 1 + this.items().length) % this.items().length);
         } else {
-            this.currentIndex.update((idx) => (idx + 1) % this.items.length);
+            this.currentIndex.update((idx) => (idx + 1) % this.items().length);
         }
 
         this.offset.set(this.getStepSize());

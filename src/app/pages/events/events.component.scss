@@ -1,0 +1,104 @@
+:host {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page {
+    max-width: 1200px;
+    width: 100%;
+
+    >div {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        >h3 {
+            margin-top: 50px;
+            margin-left: 20px;
+        }
+    }
+}
+
+.events {
+    columns: 2;
+
+    &.event-cards .event-card {
+        box-shadow: 
+            4px 0 0 3px var(--color-teal),
+            1px 0 0 1px inset var(--color-teal);
+    }
+}
+
+.meets {
+    columns: 3;
+
+    &.event-cards .event-card {
+        box-shadow: 
+            4px 0 0 3px var(--color-sage),
+            1px 0 0 1px inset var(--color-sage);
+    }
+}
+
+.price {
+    columns: 1;
+
+    &.event-cards .event-card {
+        box-shadow: 
+            4px 0 0 3px var(--color-terracotta),
+            1px 0 0 1px inset var(--color-terracotta);
+
+        .card-control {
+            a {
+                width: 200px;
+            }
+        }
+    }
+
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.event-cards {
+    column-gap: 30px;
+
+    .event-card {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--color-background);
+        padding: 30px;
+        border-radius: 10px;
+        gap: 40px;
+
+        h3 {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        p {
+            .right {
+                float: right;
+            }
+        }
+
+        .card-control {
+            columns: 2;
+            column-gap: 20px;
+
+            a {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: var(--color-primary);
+                padding: 10px 20px;
+                border-radius: 10px;
+                color: var(--color-white);
+                text-decoration: none;
+
+                &:last-of-type {
+                    background-color: var(--color-primary-dark);
+                }
+            }
+        }   
+    }
+}

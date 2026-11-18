@@ -1,4 +1,5 @@
 .carousel {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 15px;
@@ -51,6 +52,22 @@
     cursor: pointer;
 
     transition: background 0.2s;
+
+    &.inside {
+        position: absolute;
+        top: 50%;
+        z-index: 3;
+
+        transform: translate(0, -50%);
+
+        &.left {
+            left: 10px;
+        }
+
+        &.right {
+            right: 10px;
+        }
+    }
 
     &:hover {
         background: #555;

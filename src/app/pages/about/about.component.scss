@@ -1,0 +1,60 @@
+@use 'functions' as fn;
+
+:host {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page {
+    max-width: 1200px;
+    padding: 30px;
+}
+
+.part {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+
+    border-bottom: 1px solid var(--color-primary);
+
+    ul {
+        margin-left: 50px;
+    }
+}
+
+.cite {
+    padding: 50px 30px;
+    font-size: 17px;
+    text-align: center;
+    white-space: pre-line;
+    color: var(--color-primary-dark);
+    font-family: var(--font-heading);
+}
+
+.text {
+    margin-top: 30px;
+    white-space: pre-line;
+
+    img {
+        float: right;
+        max-width: 400px;
+        margin-left: 30px;
+    }
+}
+
+.certs {
+    .grid {
+        margin-top: 30px;
+        columns: 3;
+        column-gap: 30px;
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            margin-bottom: 30px;
+            box-shadow: 4px 4px 4px 0 fn.alpha(--color-heading, 50%);
+        }
+    }
+}

@@ -1,0 +1,17 @@
+<div class="page">
+    <h2>A TAK CUDOWNI KLIENCI PISZĄ ...</h2>
+
+    <div class="review-grid">
+        @for (review of ClientReviews; track $index) {
+            <div class="review">
+                <div class="review-content">
+                    {{review.content}}
+                </div>
+                <div class="review-profile">
+                    <div class="review-avatar" [style]="{'background-color': review.color}"></div>
+                    <div class="review-author" [style]="{'border-color': review.color}">{{review.author}}</div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

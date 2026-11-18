@@ -3,10 +3,10 @@
 @use "fonts" as *;
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-size: 15px;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 15px;
 }
 
 :root {
@@ -17,7 +17,7 @@
 }
 
 body {
-  background: var(--color-background);
+  background: var(--color-white);
   color: var(--color-text);
   font-family: var(--font-body);
   font-size: 17px;
