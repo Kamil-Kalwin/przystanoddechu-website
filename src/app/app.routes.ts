@@ -14,6 +14,14 @@ export const routes: Routes = [
         path: 'galeria', 
         loadComponent: () => import('./pages/gallery/gallery.component').then(m => m.GalleryPage)
     },
+    { 
+        path: 'podroze', 
+        loadComponent: () => import('./pages/travels/travels.component').then(m => m.TravelsPage)
+    },
+    {
+        path: 'podroze/:url',
+        loadComponent: () => import('./pages/travels/travel/travel.component').then(m => m.TravelPage)
+    },
 
     { 
         path: 'wydarzenia', 

@@ -1,0 +1,19 @@
+<div class="backdrop">
+    <div class="viewer-header">
+        <div>{{activeImageIdx() + 1}} / {{images().length}}</div>
+        <div class="close" (click)="close()">x</div>
+    </div>
+
+    @if (activeImage()) {
+        <div class="main">
+            <div class="arrow left" (click)="prev()">&#10094;</div>
+            <div class="image">
+                <img [src]="'assets/images/'+activeImage()?.src">
+                <div class="info">
+                    <div>{{activeImage()?.author}}</div>
+                </div>
+            </div>
+            <div class="arrow right" (click)="next()">&#10095;</div>
+        </div>
+    }
+</div>

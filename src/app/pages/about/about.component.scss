@@ -1,16 +1,5 @@
 @use 'functions' as fn;
 
-:host {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.page {
-    max-width: 1200px;
-    padding: 30px;
-}
-
 .part {
     display: flex;
     flex-direction: column;

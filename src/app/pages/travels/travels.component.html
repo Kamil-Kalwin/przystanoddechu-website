@@ -1,0 +1,32 @@
+<div class="page">
+    <div class="part">
+        <h2> Uważne Podróże</h2>
+
+        <div class="text">
+            Wyobraź sobie podróż, w której nic nie musisz. <br>
+            Nie gonią Cię plany, nie szarpią obowiązki. Jesteś Ty, ciekawość i to co wydarza się po drodze.
+            <br><br>
+            Uważna podróż to dla mnie spotkanie - z naturą, z innymi, z sobą samym. To zatrzymywanie się przy tym, co zwykle łatwo przeoczyć. Czasem będzie to popęka ścianie starego domu, czasem spojrzenie nieznajomego, światło o poranku albo wiatr na policzku.
+            <br><br>
+            To pozwolenie sobie na zachwyt bez filtra. Na odłożenie na chwilę zegarka i planu. Na przyjęcie tego co pojawia się po drodze nieplanowane, nieidealne, prawdziwe.
+            <br><br>
+            <span class="bold">Bo najpiękniejsze podróże to te, które nie kończą się na mapie.</span><br>
+            To te, które zostają w ciele jak ciepło słońca, wracają echem śmiechu, i stają się historiami, które jeszcze długo chcesz opowiadać.
+            <br><br>
+            Więc… chodź. Spakuj ciekawość. Załóż wygodne buty i otwarte serce.<br>
+            Reszta - wydarzy się sama.
+        </div>
+    </div>
+    <div class="part">
+        <h2>Ślady z drogi</h2>
+
+        <div class="travels">
+        @for (travel of Travels; track $index) {
+            <a class="card" [href]="'podroze/'+travel.path">
+                <h3>{{travel.name}}</h3>
+                <span>&#10095;&#10095;</span>
+            </a>
+        }
+        </div>
+    </div>
+</div>

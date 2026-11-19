@@ -1,21 +1,11 @@
-:host {
+.part {
     display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.page {
-    max-width: 1200px;
+    flex-direction: column;
+    gap: 30px;
     width: 100%;
-
-    >div {
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-        >h3 {
-            margin-top: 50px;
-            margin-left: 20px;
-        }
+    >h3 {
+        margin-top: 50px;
+        margin-left: 20px;
     }
 }
 

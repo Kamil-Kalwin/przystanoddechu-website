@@ -7,7 +7,7 @@
       [style.left.%]="item.x"
       [style.top.%]="item.y"
       [style.fontSize.px]="item.size"
-      [style.color]="item.color"
+      [style]="{'--text-color': item.color}"
       [style.animationDuration.s]="item.duration"
       [style.--rotation]="item.rotation + 'deg'"
     >

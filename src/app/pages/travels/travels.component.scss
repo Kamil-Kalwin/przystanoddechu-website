@@ -1,0 +1,53 @@
+@use 'functions' as fn;
+
+.part {
+    width: 100%;
+    h2 {
+        margin: 30px 0;
+    }
+}
+
+.travels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 20px;
+    gap: 30px 50px;
+
+    .card {
+        cursor: pointer;
+        position: relative;
+        padding: 20px;
+        background-color: var(--color-background);
+        box-shadow: 
+            7px -5px 0 0 var(--color-primary),
+            -1px 1px 1px 1px fn.alpha(--color-primary, 40%);
+        border-radius: 10px;
+        width: 100%;
+        text-decoration: none;
+
+        transition: box-shadow .4s ease;
+
+        h3 {
+            margin-bottom: 10px;
+        }
+
+        span {
+            position: absolute;
+            right: 0;
+            bottom: 10px;
+            color: var(--color-primary);
+            opacity: 0;
+            transition: opacity .4s ease, right .4s ease;
+        }
+
+        &:hover {
+            box-shadow: 
+                0 0 0 4px var(--color-primary);
+            span {
+                right: 10px;
+                opacity: 1;
+            }
+        }
+    }
+    
+}

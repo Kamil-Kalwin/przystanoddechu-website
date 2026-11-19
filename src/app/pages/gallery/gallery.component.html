@@ -1,4 +1,16 @@
 <div class="page">
     <h2>Na warsztatach Vedic-Art powstają ...</h2>
 
+    <div class="gallery">
+        @for (image of GalleryImages; track $index; let i = $index) {
+            <div class="image" (click)="openViewer(i)">
+                <img [src]="'assets/images/'+image.image">
+                <div class="image-author">Autor: {{image.author}}</div>
+            </div>
+        }
+    </div>
 </div>
+
+@if (isViewerOpen()) {
+    <image-viewer (onClose)="onClose()" [images]="imageViewerImages" [activeIdx]="activeIdx()"></image-viewer>
+}

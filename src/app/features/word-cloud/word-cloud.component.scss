@@ -21,6 +21,9 @@
 
     transform: translate(-50%, -50%);
 
+    color: var(--text-color);
+    text-shadow: 3px 3px 3px var(--color-background);
+
     opacity: 0;
 
     animation-name: word-animation;

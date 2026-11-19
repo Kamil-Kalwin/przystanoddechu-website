@@ -1,0 +1,30 @@
+.part {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    .text {
+        white-space: pre-line;
+    }
+
+    .gallery {
+        columns: 4;
+        gap: 20px;
+
+        @media (max-width: 1200px) {
+            columns: 3;
+        }
+
+        @media (max-width: 800px) {
+            columns: 2;
+        }
+
+        .image {
+            margin-bottom: 20px;
+            cursor: pointer;
+            img {
+                width: 100%;
+            }
+        }
+    }
+}

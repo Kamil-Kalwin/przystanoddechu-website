@@ -68,6 +68,8 @@
         <div class="content">
             <div class="card" (mouseenter)="pauseTimer()" (mouseleave)="resumeTimer()">
                 <div class="card-content" [class.visible]="showText()">"{{currentReview()?.content}}"</div>
+                <div class="card-button card-author">{{currentReview()?.author}}</div>
+                <a href="/opinie" class="card-button card-more">Zobacz więcej <span>&#10095;&#10095;</span></a>
             </div>
             <div class="controls">
                 @for (review of MainReviews; track $index; let i = $index) {
