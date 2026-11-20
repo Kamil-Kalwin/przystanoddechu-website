@@ -53,8 +53,13 @@ button {
   font-weight: 600;
 }
 
+.italic {
+  font-style: italic;
+}
+
 .page {
   max-width: 1200px;
+  min-height: calc(100vh - 200px);
   width: 100%;
   padding: 40px 20px;
 
@@ -66,4 +71,17 @@ button {
   align-items: center;
 
   gap: 30px;
+}
+
+router-outlet + * {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

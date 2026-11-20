@@ -8,7 +8,7 @@ export interface HeaderConfigData {
 export const HeaderConfig: {[key in AppPage]: HeaderConfigData} = {
     [AppPage.HOME]: {title: 'Strona główna', url: '/'},
     [AppPage.ABOUT]: {title: 'O mnie', url: '/o-mnie'},
-    [AppPage.SERVICES]: {title: 'Usługi', url: '/'},
+    [AppPage.SERVICES]: {title: 'Usługi', url: '/uslugi'},
     [AppPage.GALLERY]: {title: 'Galeria', url: '/galeria'},
     [AppPage.TRAVELS]: {title: 'Uważne podróże', url: '/podroze'},
     [AppPage.EVENTS]: {title: 'Wydarzenia', url: '/wydarzenia'},

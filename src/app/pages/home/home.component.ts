@@ -3,14 +3,16 @@ import { ClientReviews } from '@core/config/reviews';
 import { ServicesConfigList, ServicesTypeConfigData, ServiceTypeEnum } from '@core/config/services';
 import { CarouselComponent } from '@features/carousel/carousel.component';
 import { WordCloudComponent } from '@features/word-cloud/word-cloud.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'page-home',
     templateUrl: 'home.component.html',
     styleUrl: 'home.component.scss',
     imports: [
-        WordCloudComponent, CarouselComponent
-    ],
+    WordCloudComponent, CarouselComponent,
+    RouterLink
+],
 })
 export class HomePage implements OnInit, OnDestroy {
     readonly ServiceTypes = Object.entries(ServicesTypeConfigData).map((service) => ({serviceType: service[0], ...service[1]}));

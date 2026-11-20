@@ -1,14 +1,14 @@
 <main>
     <div class="hero">
         <img src="assets/images/landing_page_banner.png">
-        <word-cloud
+        <!-- <word-cloud
             [words]="keywords"
             [maxVisible]="20"
             [minFontSize]="14"
             [maxFontSize]="42"
             [hue]="190"
             [spawnInterval]="500"
-        ></word-cloud>
+        ></word-cloud> -->
         <div class="main-text">
             <h1>Przystań Oddechu</h1>
             <p>
@@ -29,7 +29,7 @@
                     <br><br>
                     Moje doświadczenia są moją nauczycielką - joga, oddech, uważność, intuicja i codzienne rytuały obecności, które przywracają sens w najprostszych gestach. Każda z tych ścieżek zaprowadziła mnie bliżej do siebie - i to z tego miejsca zapraszam Ciebie.
                 </div>
-                <button>Dowiedz się więcej</button>
+                <a routerLink="/o-mnie">Dowiedz się więcej</a>
             </div>
             <div class="image">
                 <img src="assets/images/about.png">
@@ -53,7 +53,7 @@
                         <div class="card-overlay">
                             <div class="service-list">
                                 @for (service of getServicesByType(serviceType.serviceType); track $index) {
-                                    <a [href]="service.url">{{service.title}}</a>
+                                    <a [routerLink]="'/uslugi/'+service.url">{{service.title}}</a>
                                 }
                             </div>
                         </div>
@@ -69,7 +69,7 @@
             <div class="card" (mouseenter)="pauseTimer()" (mouseleave)="resumeTimer()">
                 <div class="card-content" [class.visible]="showText()">"{{currentReview()?.content}}"</div>
                 <div class="card-button card-author">{{currentReview()?.author}}</div>
-                <a href="/opinie" class="card-button card-more">Zobacz więcej <span>&#10095;&#10095;</span></a>
+                <a routerLink="/opinie" class="card-button card-more">Zobacz więcej <span>&#10095;&#10095;</span></a>
             </div>
             <div class="controls">
                 @for (review of MainReviews; track $index; let i = $index) {
@@ -86,30 +86,30 @@
     <div class="part other">
         <h2 class="part-header">Zostań jeszcze przez chwilkę...</h2>
         <div class="content">
-            <div class="card">
+            <a routerLink="/wydarzenia" class="card">
                 <h3>Gdzie możemy się spotkać?</h3>
                 <p>Najbliższe spotkania, warsztaty, kursy.</p>
 
                 <span>&#10095;&#10095;</span>
-            </div>
-            <div class="card">
+            </a>
+            <a routerLink="/podroze" class="card">
                 <h3>Wyrusz ze mną trochę dalej</h3>
                 <p>Miejsca, drogi i podróże przeżywane uważniej.</p>
 
                 <span>&#10095;&#10095;</span>
-            </div>
-            <div class="card">
+            </a>
+            <a routerLink="/biblioteka" class="card">
                 <h3>Zrób herbatę.</h3>
                 <p>Są tu teksty, do których możesz zajrzeć bez pośpiechu.</p>
 
                 <span>&#10095;&#10095;</span>
-            </div>
-            <div class="card">
+            </a>
+            <a routerLink="/galeria" class="card">
                 <h3>Zajrzyj do tego, co powstało.</h3>
                 <p>Obrazy i chwile zatrzymane po drodze.</p>
 
                 <span>&#10095;&#10095;</span>
-            </div>
+            </a>
         </div>
     </div>
 </main>

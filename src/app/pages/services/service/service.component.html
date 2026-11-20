@@ -1,0 +1,29 @@
+<div class="page">
+    <h2>{{currentService()?.title}}</h2>
+
+    <div class="part">
+        <img [src]="'assets/images/'+currentService()?.image" alt="">
+        @for (content of currentService()?.content; track $index) {
+            <p class="line" [class.bold]="content.bold" [class.italic]="content.italic" [class.new-line]="!content.inline">
+                @if (content.title) {
+                    <h3 [class.bold]="content.bold" [class.italic]="content.italic">{{content.text}}</h3>
+                } @else if (content.link) {
+                    <a [class.bold]="content.bold" [class.italic]="content.italic" [href]="content.link">{{content.text}}</a>
+                } @else if (content.list) {
+                    &bull; <span>{{content.text}}</span>
+                }
+                @else {
+                    {{content.text}}
+                }
+            </p>
+        }
+        @if (currentService()?.button) {
+            @let serviceButton = currentService()?.button;
+            @if (serviceButton?.mail) {
+                <a class="service-button" [href]="serviceButton?.mail"><svg-icon size="30px" name="mail"></svg-icon> {{serviceButton?.text}}</a>
+            } @else if (serviceButton?.path) {
+                <a class="service-button" [routerLink]="serviceButton?.path">{{serviceButton?.text}}</a>
+            }
+        }
+    </div>
+</div>

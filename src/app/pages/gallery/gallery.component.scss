@@ -5,7 +5,7 @@
         position: relative;
         margin-bottom: 20px;
         cursor: pointer;
-        border: 3px solid var(--color-terracotta);
+        border: 3px solid var(--color-primary);
 
         img {
             display: block;
@@ -19,8 +19,8 @@
             padding: 10px 20px;
             border-radius: 0 10px 10px 0;
             box-shadow: 
-                2px 3px 0 1px var(--color-terracotta),
-                0px 3px 0 1px var(--color-terracotta);
+                2px 3px 0 1px var(--color-primary),
+                0px 3px 0 1px var(--color-primary);
         }
     }
 }

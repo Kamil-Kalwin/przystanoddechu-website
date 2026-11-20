@@ -9,7 +9,14 @@ export const routes: Routes = [
         path: 'o-mnie', 
         loadComponent: () => import('./pages/about/about.component').then(m => m.AboutPage)
     },
-
+    { 
+        path: 'uslugi', 
+        loadComponent: () => import('./pages/services/services.component').then(m => m.ServicesPage)
+    },
+    {
+        path: 'uslugi/:url',
+        loadComponent: () => import('./pages/services/service/service.component').then(m => m.ServicePage)
+    },
     { 
         path: 'galeria', 
         loadComponent: () => import('./pages/gallery/gallery.component').then(m => m.GalleryPage)

@@ -1,0 +1,20 @@
+<div class="page">
+    <h2>Co znajdziesz w Przystani Oddechu</h2>
+    <h3>Uważność, oddech, twórczość, ruch oraz spotkania dla kobiet - w różnych formach, od regularnych zajęć i indywidualnych spotkań po warsztaty i wyjazdy.
+    <br>Zobacz co jest Ci teraz najbliższe.</h3>
+
+    <div class="part">
+        @for (serviceType of ServicesTypes | keyvalue; track $index) {
+            <div class="card">
+                <img class="card-image" [src]="'assets/images/'+serviceType.value.image">
+                <div class="card-title">{{serviceType.value.title}}</div>
+                <div class="card-description">{{serviceType.value.description}}</div>
+                <div class="card-buttons">
+                    @for (service of servicesByServiceType(serviceType.key); track $index) {
+                        <a [href]="'uslugi/'+service.url">{{service.title}}</a>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
